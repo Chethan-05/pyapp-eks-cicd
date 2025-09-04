@@ -8,7 +8,7 @@ pipeline{
         }
         stage("Pust To Docker Hub"){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pwd', usernameVariable: 'usr')]) {
+              withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'pwd', usernameVariable: 'usr')]) {
                     sh "docker login -u ${usr} -p ${pwd}"
                     sh "docker push kammana/pyappeks:${env.BUILD_NUMBER}"
                 }
